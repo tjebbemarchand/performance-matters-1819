@@ -5,11 +5,6 @@ const port = 3000;
 const path = require('path');
 const fs = require("fs");
 
-// // const content = JSON.parse(fs.readFileSync('public/results.json', 'utf8'));
-// const books = JSON.parse(fs.readFileSync('public/results.json'));
-// console.log(books);
-// // console.log(content);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -20,6 +15,10 @@ app.use(express.static('./public/css')); // Defined where all media files are lo
 app.get('/', renderHomepage);
 app.post('/search', renderSearchpage);
 app.get('/detailpage/:id', renderDetailpage);
+
+// const books = fs.readFile(`${__dirname}/public/results.json`, function(errpr, data) {
+//     if(error) throw error;
+// });
 
 function renderHomepage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {

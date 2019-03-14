@@ -6,7 +6,7 @@
     <% data.forEach(function(book) { %>
         <a href="detailpage/<%= book.isbn %>" class="book-result">
             <div class="book-result__image">
-                <img src="<%= book.cover_image %>"></img>
+                <img src="<%= book.cover_image %>" al="Boek cover: <%= book.title %>"></img>
             </div>
         </a>
     <% }) %>
