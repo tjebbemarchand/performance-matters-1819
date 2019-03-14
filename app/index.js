@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = 3000;
 const path = require('path');
-const fs = require("fs");
+const fs = require('fs');
+const fetch = require('node-fetch');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,8 +25,7 @@ function renderHomepage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
         if(error) throw error;
         
-        const jsonData = JSON.parse(data.toString());
-        const popularBooks = jsonData.data.slice(60, 80);
+        const popularBooks = JSON.parse(data.toString()).data.slice(60, 80);
     
         res.render('pages/index', {
             data: popularBooks
@@ -35,12 +35,11 @@ function renderHomepage(req, res) {
 
 function renderSearchpage(req, res) {
     const input = req.body.searchQuery;
-   
+
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
         if(error) throw error;
         
-        const jsonData = JSON.parse(data.toString());
-        const searchedBooks = jsonData.data.filter(function(book) {
+        const searchedBooks = JSON.parse(data.toString()).data.filter(function(book) {
             return book.title.includes(input);
         });
     
@@ -54,11 +53,10 @@ function renderDetailpage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
         if(error) throw error;
 
-        const jsonData = JSON.parse(data.toString());
-        const detailBook = jsonData.data.filter(function(book) {
+        const detailBook = JSON.parse(data.toString()).data.filter(function(book) {
             return book.isbn === req.params.id; 
         });
-
+        
         res.render('pages/details', {
             data: detailBook[0]
         });
@@ -68,3 +66,18 @@ function renderDetailpage(req, res) {
 app.listen(port, function() {
     console.log(`Example app listening on port ${port}!`);
 });
+
+
+ // const data = await fetch(`https://zoeken.oba.nl/api/v1/search?authorization=1e19898c87464e239192c8bfe422f280&q=$ontvoerd&facet=type(book)&librarian=true&pagesize=20&refine=true`);
+    
+    // // const books = convert.xml2json(data); 
+
+    // console.log(data.toString());
+
+    // const searchedBooks = await getBooks(input);
+
+    // console.log(searchedBooks);
+
+    // res.render('pages/search', {
+    //     data: searchedBooks
+    // });
