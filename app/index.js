@@ -66,18 +66,3 @@ function renderDetailpage(req, res) {
 app.listen(port, function() {
     console.log(`Example app listening on port ${port}!`);
 });
-
-
- // const data = await fetch(`https://zoeken.oba.nl/api/v1/search?authorization=1e19898c87464e239192c8bfe422f280&q=$ontvoerd&facet=type(book)&librarian=true&pagesize=20&refine=true`);
-    
-    // // const books = convert.xml2json(data); 
-
-    // console.log(data.toString());
-
-    // const searchedBooks = await getBooks(input);
-
-    // console.log(searchedBooks);
-
-    // res.render('pages/search', {
-    //     data: searchedBooks
-    // });

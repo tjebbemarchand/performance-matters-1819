@@ -1,54 +1,55 @@
-# Performance Matters @cmda-minor-web · 2018-2019
+# Server side OBA app
 
-In dit vak gaan we de eerder bij de OBA gemaakte client side web applicatie ombouwen naar een server side gerenderde applicatie. Verder gaan we een reeks van optimalisaties doorvoeren om de performance van de applicatie te verbeteren. Uiteindelijk zorgen we ervoor dat de applicatie offline beschikbaar.
+## Performance Matters
+### Installation
+To install the OBA server side app, you need to Git clone the repository. After that you can run an NPM install on the directory of the app to install all the dependencies the app needs.
 
-## Leerdoelen
-- _Je weet het verschil tussen client side en server side rendering en kan server side rendering toepassen_
-- _Je begrijpt hoe de critical render path werkt, en hoe je deze kan optimaliseren voor een betere runtime en/of perceived performance._
-- _Je begrijpt hoe een Service Worker werkt en kan deze in jou applicatie implementeren._
+    ```
+    # git clone https://github.com/tjebbemarchand/tjebbe-wafs.github.io.git
+    # npm install
+    ```
 
-[Rubric](https://docs.google.com/spreadsheets/d/e/2PACX-1vTO-pc2UMvpT0pUjt6NJeckc5N9E7QvCxEfVJW1JjuM0m_9MM8ra05J0s6br486Rocz5JVMhAX_C37_/pubhtml?gid=0&single=true)
+### Tooling
+I used NPM scripts to prefix and minify my CSS stylesheet. To run the build css command, simply run the following command in your terminal.
 
-## Lesprogramma
-
-### Week 1 - Server Side rendering
-
-Doel: Webpagina's server side renderen
-
-[Opdrachten](https://github.com/cmda-minor-web/performance-matters-1819/blob/master/week-1.md)
-
-[Slides](...)
-
-### Week 2 - Critical Rendering Path  
-
-Doel: Critical Rendering path optimaliseren
-[Opdrachten](https://github.com/cmda-minor-web/performance-matters-1819/blob/master/week-2.md)
-
-[Slides](...)
-
-### Week 3 - Going Offline 
-
-Doel: Webpagina's offline beschikbaar stellen
-
-[Opdrachten](https://github.com/cmda-minor-web/performance-matters-1819/blob/master/week-3.md)
-
-[Slides](...)
+    ```
+    # npm run build:css
+    ```
 
 
-<!-- Add a link to your live demo in Github Pages 🌐-->
+## Browser Technologies
+### Testing features
+#### Colors
+##### Problem
+I installed a Chrome plugin to check for color blindness on my OBA app. The app that i installed is called. [Colorblindly](https://chrome.google.com/webstore/detail/colorblindly/floniaahmccleoclneebhhmnjgdfijgg).
+Here you can check different kinds of color blindness for contrast on contrast.
 
-<!-- ☝️ replace this description with a description of your own work -->
+![Normal color](./docs/color/normal.jpeg)
+![Blue blindness](./docs/color/blue-blindness.jpeg)
+![Green blindness](./docs/color/green-blindness.jpeg)
 
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
+##### Solution
+Colorblindness is not an issue for my app. On every tone of color it is still visible for the user.
 
-<!-- Maybe a table of contents here? 📚 -->
+#### Custom fonts
+No using custom fonts
 
-<!-- How about a section that describes how to install this project? 🤓 -->
+#### No mouse and trackpad
+##### Problem
+The tab key doesn't detect the a tags on the page only the inputs.
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
+##### Solution
+I inserted a tabindex of 0 on every a tag on the page. Now the tab does detect all the a tag and also the input fields.
 
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
+#### No JavaScript
+##### Problem
+No problem so far.
 
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+##### Solution
+If i turn off JavaScript in my browser, app stil works as should. I think that's because everything is written in NodeJS.
 
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+#### Cookies
+No using cookies
+
+#### LocalStorage
+No using LocalStorage
