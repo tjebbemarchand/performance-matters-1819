@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "deploy": "ngrok http 3000"
+    "deploy": "ngrok http 3000",
+    "build:css": "node gulp/styles.js"
   },
   "author": "T. Marchand",
   "license": "ISC",
