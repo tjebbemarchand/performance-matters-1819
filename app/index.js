@@ -9,6 +9,7 @@ const fs = require('fs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+enableCaching();
 enableCompression();
 
 app.set('views', path.join(__dirname, 'views')); // Defined where template files are located.
@@ -58,6 +59,15 @@ function renderDetailpage(req, res) {
         res.render('pages/details', {
             data: detailBook[0]
         });
+    });
+}
+
+function enableCaching() {
+    // Enable caching
+    app.use((req, res, next) => {
+        res.setHeader('Cache-Control', 'max-age=' + 7 * 24 * 60 *
+        60);
+        next();
     });
 }
 
