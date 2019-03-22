@@ -14,7 +14,7 @@ enableCompression();
 
 app.set('views', path.join(__dirname, 'views')); // Defined where template files are located.
 app.set('view engine', 'ejs'); // Defined which template engine to use.
-app.use(express.static('./public/css')); // Defined where all media files are located.
+app.use(express.static('./public/')); // Defined where all media files are located.
 
 app.get('/', renderHomepage);
 app.post('/search', renderSearchpage);
