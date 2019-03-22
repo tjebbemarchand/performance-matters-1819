@@ -1,25 +1,24 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const shrinkRay = require('shrink-ray');
 const port = 3000;
 const path = require('path');
 const fs = require('fs');
-const fetch = require('node-fetch');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+enableCaching();
+enableCompression();
+
 app.set('views', path.join(__dirname, 'views')); // Defined where template files are located.
 app.set('view engine', 'ejs'); // Defined which template engine to use.
-app.use(express.static('./public/css')); // Defined where all media files are located.
+app.use(express.static('./public/')); // Defined where all media files are located.
 
 app.get('/', renderHomepage);
 app.post('/search', renderSearchpage);
 app.get('/detailpage/:id', renderDetailpage);
-
-// const books = fs.readFile(`${__dirname}/public/results.json`, function(errpr, data) {
-//     if(error) throw error;
-// });
 
 function renderHomepage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
@@ -61,6 +60,30 @@ function renderDetailpage(req, res) {
             data: detailBook[0]
         });
     });
+}
+
+function enableCaching() {
+    // Enable caching
+    app.use((req, res, next) => {
+        res.setHeader('Cache-Control', 'max-age=' + 7 * 24 * 60 *
+        60);
+        next();
+    });
+}
+
+function enableCompression() {
+    // Enable compression
+    app.use(shrinkRay({
+        cache: () => false,
+        cacheSize: false,
+        filter: () => true,
+        brotli: {
+            quality: 11 // Between 1 - 11
+        },
+        zlib: {
+            level: 6 // Between 1 - 9
+        }
+    }));
 }
 
 app.listen(port, function() {

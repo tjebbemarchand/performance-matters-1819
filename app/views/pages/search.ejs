@@ -4,7 +4,7 @@
     
     <h2>Als je '<%= data[0].title %>' leuk vond.</h2>
     <div class="searched-book">
-        <img src="<%= data[0].cover_image %>" alt="Boek cover: <%= book.title %>"></img>
+        <img src="<%= data[0].cover_image %>" alt="Boek cover: <%= data[0].title %>"></img>
     </div>
 
     <h2>Dan bevelen wij deze boeken aan...</h2>
@@ -12,7 +12,12 @@
         <% data.slice(1, data.length).forEach(function(book) { %>
             <a tabindex="0" href="/detailpage/<%= book.isbn %>" class="book-result">
                 <div class="book-result__image">
-                    <img src="<%= book.cover_image %>" alt="Boek cover: <%= book.title %>"></img>
+                    <img alt=“Book cover: <%= book.title %>"
+                        srcset="img/book-cover-big.jpg 500w,
+                                img/book-cover-medium.jpg 250w,
+                                img/book-cover-small.jpg 70w"
+                        sizes="(max-width: 500px) 12vw, (max-width: 768px) 25vw, (max-width: 1280px) 50vw, 100px"
+                        src="img/book-cover-medium.jpg">
                 </div>
             </a>
         <% }); %>
