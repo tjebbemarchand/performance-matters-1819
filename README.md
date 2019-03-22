@@ -67,7 +67,40 @@ I enabled cache control for the next time a page loads. So it doesn't have to re
 	    next();
     });
 
+With cache control enabled, the overal load time of the page increased by 2 seconds. Because it doesn't have to it from the server anymore.
+
+### Conclusion
+After i implemented all the performance improvements, the load time increased by alot. With caching enabled it went from total load time on slow 3G connections, from 27.7 seconds to 4.2 seconds. 😯
+
 ## Tooling
 I used NPM scripts to prefix and minify my CSS stylesheet. To run the build css command, simply run the following command in your terminal.
 
     $ npm run build:css
+
+This command fires a Gulp script to do some actions on my CSS files.
+
+    const gulp = require('gulp');
+    const concat = require('gulp-concat');
+    const purgecss = require('gulp-purgecss');
+    const cssnano = require('gulp-cssnano');
+    const baseDir = 'public/css/';
+    
+    gulp.src([
+        baseDir + 'bootstrap.css',
+        baseDir +  'styles.css'
+    ])
+    
+    .pipe(concat('styles.min.css'))
+    .pipe(purgecss({
+        content: ["views/**/*.ejs"]
+    }))
+    .pipe(cssnano())
+    .pipe(gulp.dest(baseDir));
+
+For local development, i installed the package nodemon. All i have to do to some work is type the following command in the terminal.
+
+    $ npm run dev
+
+This command runs the following command.
+
+    $ nodemon index.js
