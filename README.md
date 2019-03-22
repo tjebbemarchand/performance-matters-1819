@@ -32,7 +32,7 @@ The first paint of the app decreased from 18.9 seconds to 9.3 seconds.
 ![First paint server side rendering](./docs/server-side-first-paint.jpg)
 
 #### First view
-I want to decrease the time for first paint render. On slow 3G connection the first paint render is 9.3 seconds. That is a bit to long.
+I want to decrease the time for first paint render. On slow 3G connection the first paint render is 9.3 seconds. That is a bit too long.
 I want to achieve this by a couple of steps
  - Remove unused CSS code
  - Merge CSS files
@@ -43,7 +43,7 @@ I want to achieve this by a couple of steps
 
  The first paint on server side rendering with first view optimalisations:
  It went from 9.3 seconds to 4.2 seconds on slow 3G connection.
- ![First paint server side with first view optimisations](./docs/server-side-first-view-first-paint.jpg)
+ ![First paint server side with first view optimisations](./docs/server-side-first-paint.jpg)
 
 #### Image loading
  - Responsive images
