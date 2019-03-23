@@ -13,7 +13,6 @@ I tested my OBA app on slow 3G connection on client side rendering.
 The total load time is 27.7 seconds.
 ![Load time client side rendering](./docs/client-side-load-time.jpg)
 
-The first paint on client side rendering:
 The first paint is 18.9 seconds.
 ![First paint client side rendering](./docs/client-side-first-paint.jpg)
 
@@ -27,7 +26,6 @@ When the OBA app was server side renderd, the performance increased by a lot wit
 The total load time descreased from 27.7 seconds to 11.4 seconds.
 ![Load time server side rendering](./docs/server-side-load-time.jpg)
 
-The first paint on server side rendering:
 The first paint of the app decreased from 18.9 seconds to 9.3 seconds.
 ![First paint server side rendering](./docs/server-side-first-paint.jpg)
 
@@ -70,7 +68,7 @@ I enabled cache control for the next time a page loads. So it doesn't have to re
 With cache control enabled, the overal load time of the page increased by 2 seconds. Because it doesn't have to it from the server anymore.
 
 ### Conclusion
-After i implemented all the performance improvements, the load time increased by alot. With caching enabled it went from total load time on slow 3G connections, from 27.7 seconds to 4.2 seconds. 😯
+After i implemented all the performance improvements, the load time increased by alot. With caching enabled it went from total load time on slow 3G connections, from 27.7 seconds to 4.2 seconds.
 
 ## Tooling
 I used NPM scripts to prefix and minify my CSS stylesheet. To run the build css command, simply run the following command in your terminal.
@@ -104,3 +102,9 @@ For local development, i installed the package nodemon. All i have to do to some
 This command runs the following command.
 
     $ nodemon index.js
+
+## Feedback
+I received feedback to work on some things.
+- Client side JavaScript enhancement
+- Make a favorites page to make the app more interesting.
+- Work on the UI design

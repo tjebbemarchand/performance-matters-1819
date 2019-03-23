@@ -18,16 +18,21 @@ HOMEPAGE
 **************************************/
 /* HEADER */
 .header {
-    background-color: #F8A41E;
+    background-color: rgb(233, 233, 233);
     width: 100%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
     display: flex;
     justify-content: center;
-    width: 400px;
+    width: 250px;
     padding: 10px;
     margin: 0 auto;
+}
+
+.logo > path {
+    fill: rgba(235, 31, 38, 0.85);
 }
 
 .search {
@@ -48,10 +53,35 @@ HOMEPAGE
     flex-basis: 5%;
 
     border: none;
-    background-color: #EB1F25;
+    background-color: rgb(150, 150, 150);
     padding: 10px;
     font-size: 18px;
     color: white;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.search__submit:hover {
+    background-color: #EB1F25;
+}
+
+.header__heart {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.header__heart svg {
+    width: 30px;
+}
+
+.header__heart svg > g {
+    fill: black;
+}
+
+.header__heart:hover svg > g {
+    fill: red;
 }
 
 /* POPULAR SECTION */
@@ -140,6 +170,20 @@ DETAILPAGE
     padding-left: 20px;
 }
 
+.add-to-favorites button {
+    display: none;
+    background-color: rgb(150, 150, 150);
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.add-to-favorites button:hover {
+    background-color: #EB1F25;
+}
 
 /* Loader */
 .loader {
@@ -163,4 +207,44 @@ DETAILPAGE
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* Custom heart checkbox */
+input[type=checkbox].css-checkbox {
+	position: absolute;
+	z-index: -1000;
+	left: -1000px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
+input[type=checkbox].css-checkbox+label.css-label {
+	padding-left: 40px;
+	height: 35px;
+	display: inline-block;
+	line-height: 35px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 18px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked+label.css-label {
+	background-position: 0 -35px;
+}
+
+label.css-label {
+	background-image: url(../img/heart.png);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }

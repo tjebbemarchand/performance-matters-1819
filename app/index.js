@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public')); // Defined where all media files
 app.get('/', renderHomepage);
 app.post('/search', renderSearchpage);
 app.get('/detailpage/:id', renderDetailpage);
+app.get('/favorites', renderFavoritespage);
 
 function renderHomepage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
@@ -60,6 +61,10 @@ function renderDetailpage(req, res) {
             data: detailBook[0]
         });
     });
+}
+
+function renderFavoritespage() {
+    
 }
 
 function enableCaching() {
