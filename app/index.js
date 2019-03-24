@@ -63,8 +63,8 @@ function renderDetailpage(req, res) {
     });
 }
 
-function renderFavoritespage() {
-    
+function renderFavoritespage(req, res) {
+    res.render('pages/favorites')
 }
 
 function enableCaching() {

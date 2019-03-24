@@ -1,7 +1,6 @@
 <% include ../partials/header %>
 
 <% if (data) { %>
-
     <div data-id="<%= data.isbn %>" class="details-overview">
         <div class="details-overview__img">
             <img src="<%= data.cover_image %>"></img>
@@ -11,9 +10,9 @@
             <h3 class="details__author"><%= data.author %></h3>
             <p class="details__description"><%= data.description %></p>
             <ul class="details__information">
-                <li><%= data.language %></li>
-                <li><%= data.publisher %></li>
-                <li><%= data.publication_year %></li>
+                <li class="details__language"><%= data.language %></li>
+                <li class="details__publisher"><%= data.publisher %></l>
+                <li class="details__year"><%= data.publication_year %></li>
             </ul>
             <form class="add-to-favorites">
                 <input type="checkbox" name="heart" id="heart" class="css-checkbox" /><label for="heart" class="css-label">Voeg toe aan favorieten</label>
@@ -21,7 +20,6 @@
             </form>
         </div>
     </div>
-
 <% } %>
 
 <% include ../partials/footer %>
