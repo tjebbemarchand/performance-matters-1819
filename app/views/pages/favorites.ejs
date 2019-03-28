@@ -2,7 +2,15 @@
 
 <h1 class="popular-title">Jouw favorieten boeken</h1>
 <section class="favorite-section">
-    
+    <% if(favorites) { %>
+        <% favorites.forEach(function(favorite) { %>
+            <a tabindex="0" href="detailpage/<%= favorite.isbn %>" class="book-result">
+                <div class="book-result__image">
+                    <img src="<%= favorite.cover_image %>" alt="Boek cover: <%= favorite.title %>"></img>
+                </div>
+            </a>
+        <% }); %>
+    <% } %>
 </section>
 
 <% include ../partials/footer %>

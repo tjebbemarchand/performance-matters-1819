@@ -172,7 +172,7 @@ DETAILPAGE
 }
 
 .add-to-favorites button {
-    display: none;
+    /* display: none; */
     background-color: rgb(150, 150, 150);
     border: none;
     padding: 5px 10px;
@@ -261,11 +261,21 @@ label.css-label {
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
+    .search__input {
+        flex-basis: 75%;
+    }
+
     .popular-section,
     .favorite-section {
         grid-template-columns: repeat(4, 1fr);
         grid-row-gap: 15px;
         grid-column-gap: 15px;
+    }
+
+    .details-overview {
+        grid-template-columns: 30% 1fr;
+        grid-column-gap: 15px;
+        width: 75%;
     }
 }
 
@@ -280,9 +290,23 @@ label.css-label {
     .book-result__image {
         height: 250px;
     }
-}
+
+    .details-overview {
+        grid-template-columns: 1fr;
+        grid-column-gap: 15px;
+        width: 75%;
+    }
+    
+    .details-overview__img img {
+        width: 50%;
+        margin: 0 auto;
+    }
 
 @media only screen and (max-width: 480px) {
+    .logo {
+        width: 200px;
+    }
+
     .popular-section,
     .favorite-section {
         grid-template-columns: repeat(1, 1fr);
@@ -294,8 +318,11 @@ label.css-label {
         height: 300px;
     }
 
-
     .book-result__image:hover {
         transform: scale(1);
+    }
+
+    .details-overview {
+        width: 100%;
     }
 }

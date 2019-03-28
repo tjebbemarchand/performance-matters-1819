@@ -5,9 +5,12 @@ const shrinkRay = require('shrink-ray');
 const port = 3000;
 const path = require('path');
 const fs = require('fs');
+const cookieParser = require('cookie-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(cookieParser());
 
 enableCaching();
 enableCompression();
@@ -20,6 +23,11 @@ app.get('/', renderHomepage);
 app.post('/search', renderSearchpage);
 app.get('/detailpage/:id', renderDetailpage);
 app.get('/favorites', renderFavoritespage);
+app.post('/add-to-favorites', addToFavorites);
+
+app.get('/offline', function(req, res) {
+    res.render('pages/offline');
+});
 
 function renderHomepage(req, res) {
     fs.readFile(__dirname + '/public/results.json', function(error, data) {
@@ -54,7 +62,7 @@ function renderDetailpage(req, res) {
         if(error) throw error;
 
         const detailBook = JSON.parse(data.toString()).data.filter(function(book) {
-            return book.isbn === req.params.id; 
+            return book.isbn === req.params.id;
         });
         
         res.render('pages/details', {
@@ -64,7 +72,30 @@ function renderDetailpage(req, res) {
 }
 
 function renderFavoritespage(req, res) {
-    res.render('pages/favorites')
+    fs.readFile(__dirname + '/public/results.json', function(error, data) {
+        if(error) throw error;
+
+        if(req.cookies.favorites) {
+            var favorites = req.cookies.favorites.map(function(bookID) {
+                return JSON.parse(data.toString()).data.filter(function(book) {
+                    return book.isbn === bookID;
+                });
+            });
+
+            favorites = [].concat.apply([], favorites);
+        }
+
+        res.render('pages/favorites', {
+            favorites
+        });
+    });
+}
+
+function addToFavorites(req, res) {
+    let favoritesArray = req.cookies.favorites ? req.cookies.favorites : [];
+    favoritesArray.push(req.body.heart);
+    res.cookie('favorites', favoritesArray, { 'maxAge':  365 * 24 * 60 * 60 });
+    res.redirect(`/detailpage/${req.body.heart}`);
 }
 
 function enableCaching() {

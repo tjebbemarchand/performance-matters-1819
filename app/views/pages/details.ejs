@@ -14,8 +14,8 @@
                 <li class="details__publisher"><%= data.publisher %></l>
                 <li class="details__year"><%= data.publication_year %></li>
             </ul>
-            <form class="add-to-favorites">
-                <input type="checkbox" name="heart" id="heart" class="css-checkbox" /><label for="heart" class="css-label">Voeg toe aan favorieten</label>
+            <form class="add-to-favorites" id="add-to-favorites" method="POST" action="/add-to-favorites" name="add-to-favorites">
+                <input type="checkbox" name="heart" id="heart" value="<%= data.isbn %>" class="css-checkbox" /><label for="heart" class="css-label">Voeg toe aan favorieten</label>
                 <button type="submit">Voeg toe</button>
             </form>
         </div>

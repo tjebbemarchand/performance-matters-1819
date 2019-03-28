@@ -6,9 +6,8 @@ const baseDir = 'public/css/';
 
 gulp.src([
     baseDir + 'bootstrap.css',
-    baseDir +  'styles.css'
+    baseDir + 'styles.css'
 ])
-
 .pipe(concat('styles.min.css'))
 .pipe(purgecss({
     content: ["views/**/*.ejs"]
