@@ -1,10 +1,9 @@
-// 'use strict';
+'use strict';
 const cacheName = 'v1';
 
 const cacheAssets = [
     '/favorites',
-    '/detailpage',
-    'css/styles.css'
+    'css/styles.min.css'
 ];
 
 // Call Install Event
