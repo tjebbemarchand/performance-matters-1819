@@ -120,7 +120,7 @@ Also i made the app responsive for tablets and mobile devices. Now the books get
 
 ## Offline with service worker
 ### Service worker
-I implemented a service worker to store the favorite page and CSS stylesheet for offline use.
+I implemented a service worker to store the favorite page and CSS stylesheet for offline use. To make the favorite page offline, i had to add the books with server side logic. So the client side JavaScript for adding books to your favorites is no longer in use. The code is still there but is not executing.
 
     if ('serviceWorker' in navigator) {
 	    window.addEventListener('load', function () {
